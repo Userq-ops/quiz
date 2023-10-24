@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Quiz</title>
+</head>
+<body>
+  <h1>JavaScript Quiz</h1>
+  <form id="quizForm">
+    <ol>
+      <li>
+        <h3>Что такое DOM?</h3>
+        <input type="radio" name="q1" value="a"> Document Object Model<br>
+        <input type="radio" name="q1" value="b"> Data Object Model<br>
+        <input type="radio" name="q1" value="c"> Document Order Model<br>
+      </li>
+      <li>
+        <h3>Как объявить переменную в JavaScript?</h3>
+        <input type="radio" name="q2" value="a"> var myVar = 5;<br>
+        <input type="radio" name="q2" value="b"> variable myVar = 5;<br>
+        <input type="radio" name="q2" value="c"> v myVar = 5;<br>
+      </li>
+      <li>
+        <h3>Какой оператор используется для сравнения значений и типов в JavaScript?</h3>
+        <input type="radio" name="q3" value="a"> ==<br>
+        <input type="radio" name="q3" value="b"> ===<br>
+        <input type="radio" name="q3" value="c"> =<br>
+      </li>
+    </ol>
+    <input type="submit" value="Проверить результаты">
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    const quizForm = document.getElementById("quizForm");
+    const resultsDiv = document.getElementById("results");
+
+    quizForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const answers = {
+        q1: document.querySelector('input[name="q1"]:checked').value,
+        q2: document.querySelector('input[name="q2"]:checked').value,
+        q3: document.querySelector('input[name="q3"]:checked').value,
+      };
+
+      let score = 0;
+
+      if (answers.q1 === "a") {
+        score++;
+      }
+
+      if (answers.q2 === "a") {
+        score++;
+      }
+
+      if (answers.q3 === "b") {
+        score++;
+      }
+
+      resultsDiv.innerHTML = `Вы набрали ${score} из 3 баллов.`;
+    });
+  </script>
+</body>
+</html>
